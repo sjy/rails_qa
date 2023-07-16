@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+#
+# 创建一个 editor 用户
+editor = User.create(
+  email: 'editor@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: 'editor'
+)
+puts "Editor user created: #{editor.email}"
+
+# 创建一个 reviewer 用户
+reviewer = User.create(
+  email: 'reviewer@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: 'reviewer'
+)
+puts "Reviewer user created: #{reviewer.email}"

@@ -15,6 +15,9 @@ gem "rails", "~> 7.0.6"
 gem "stimulus-rails"
 gem "turbo-rails"
 gem "vite_rails"
+gem "devise"
+gem "kaminari"
+gem "csv"
 
 group :production do
   gem "postmark-rails"

@@ -1,3 +1,4 @@
 class ApplicationController < ActionController::Base
-  include BasicAuth
+  before_action :authenticate_user!
+  # include BasicAuth
 end
