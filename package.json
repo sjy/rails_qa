@@ -1,0 +1,31 @@
+{
+  "private": "true",
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.1",
+    "@hotwired/turbo-rails": "^7.3.0",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "modern-normalize": "^2.0.0",
+    "postcss": "^8.4.26",
+    "prettier": "^3.0.0",
+    "rollup": "^3.26.2",
+    "stale-dep": "^0.7.0",
+    "stylelint": "^15.10.1",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-declaration-strict-value": "^1.9.2",
+    "stylelint-prettier": "^4.0.0",
+    "vite": "^4.3.0",
+    "vite-plugin-rails": "^0.1.0"
+  },
+  "scripts": {
+    "fix": "npm run -- lint:js --fix && npm run -- lint:css --fix",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "stale-dep && eslint 'app/{components,frontend,javascript}/**/*.{js,jsx}'",
+    "lint:css": "stale-dep && stylelint 'app/{components,frontend,assets/stylesheets}/**/*.css'",
+    "postinstall": "stale-dep -u",
+    "start": "stale-dep && concurrently -i -k --kill-others-on-fail -p none 'bin/rails s -b 0.0.0.0'"
+  }
+}
