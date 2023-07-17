@@ -1,4 +1,4 @@
-<%= form_with url: import_data_records_path, multipart: true do |form| %>
+<%= form_with url: import_data_records_path, multipart: false do |form| %>
   <div class="form-group">
     <%= form.label :file, "选择 CSV 文件" %>
     <%= form.file_field :file, accept: '.csv', required: true %>
@@ -12,6 +12,7 @@
     <th>ID</th>
     <th>Name</th>
     <th>Value</th>
+    <th>Operation</th>
   </tr>
   </thead>
   <tbody>
@@ -20,6 +21,10 @@
       <td><%= data_record.id %></td>
       <td><%= data_record.name %></td>
       <td><%= data_record.value %></td>
+      <td>
+        <%= link_to '编辑', edit_data_record_path(data_record) %>|
+        <%= button_to '删除', data_record_path(data_record), method: :delete, data: { turbo_confirm: '确定要删除这条记录吗？' }, form: { style: 'display:inline-block;' } %>
+      </td>
     </tr>
   <% end %>
   </tbody>

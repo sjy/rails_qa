@@ -1,14 +1,37 @@
 class DataRecordsController < ApplicationController
   def index
+    @data_records = DataRecord.order(:id).page(params[:page]).per(params[:per_page])
   end
 
   def show
+    @data_record = DataRecord.find(params[:id])
   end
 
   def edit
+    @data_record = DataRecord.find(params[:id])
   end
 
   def update
+    @data_record = DataRecord.find(params[:id])
+    if @data_record.update(data_record_params)
+      flash[:notice] = "数据记录已成功更新！"
+      redirect_to data_records_path
+    else
+      flash.now[:alert] = "更新失败，请检查输入！"
+      render :edit
+    end
+  end
+
+  def destroy
+    @data_record = DataRecord.find(params[:id])
+    @data_record.destroy
+    flash[:notice] = "数据记录已成功删除！"
+    redirect_to data_records_url
+  end
+
+  def data_record_params
+    params.require(:data_record).permit(:name, :value)
+    # ... 其他属性 ...
   end
 
   def import
@@ -16,7 +39,7 @@ class DataRecordsController < ApplicationController
       file = params[:file].path
       CSV.foreach(file, headers: true) do |row|
         # 使用唯一标识符（例如 id）查找现有记录，如果不存在，则初始化一个新记录
-        data_record = DataRecord.find_or_initialize_by(name: row['name'])
+        data_record = DataRecord.find_or_initialize_by(name: row["name"])
         # 使用 CSV 文件中的数据更新现有记录或创建新记录
         data_record.update(row.to_hash)
       end
