@@ -6,18 +6,19 @@ ruby "3.1.4"
 gem "active_type"
 gem "bcrypt"
 gem "bootsnap", require: false
+gem "csv"
+gem "devise"
 gem "good_migrations"
+gem "kaminari"
 gem "pg", "~> 1.1"
 gem "pgcli-rails"
 gem "puma", "~> 5.0"
+gem "pundit", require: true
 gem "rack-canonical-host"
 gem "rails", "~> 7.0.6"
 gem "stimulus-rails"
 gem "turbo-rails"
 gem "vite_rails"
-gem "devise"
-gem "kaminari"
-gem "csv"
 
 group :production do
   gem "postmark-rails"

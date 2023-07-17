@@ -10,7 +10,7 @@
       <p>
         欢迎您，<%= current_user.role %>！
         <%= link_to '编辑个人资料', edit_user_registration_path %>
-        <%= link_to '登出', destroy_user_session_path, method: :delete %>
+        <%= button_to '登出', destroy_user_session_path, method: :delete %>
       </p>
     <% else %>
       <p>

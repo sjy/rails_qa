@@ -21,5 +21,7 @@ module Blog
 
     # Prevents Rails from trying to eager-load the contents of app/frontend
     config.javascript_path = "frontend"
+    config.autoload_paths += Dir[Rails.root.join('app', 'policies', '*.rb'), Rails.root.join('app', 'lib', '*.rb')
+    ]
   end
 end

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => "/sidekiq" if defined?(Sidekiq) # monitoring console
 
-  devise_for :users
+  devise_for :users do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
   root "home#index"
 
