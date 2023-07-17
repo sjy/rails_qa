@@ -1,6 +1,9 @@
 class DataRecordsController < ApplicationController
   def index
-    @data_records = DataRecord.order(:id).page(params[:page]).per(params[:per_page])
+    @data_records = Rails.cache.fetch("data_records", expires_in: 5.minutes) do
+      # DataRecord.order(:id).page(params[:page]).per(params[:per_page])
+      DataRecord.all
+    end
   end
 
   def show
@@ -17,6 +20,7 @@ class DataRecordsController < ApplicationController
     # authorize @data_record
     if @data_record.update(data_record_params)
       flash[:notice] = "数据记录已成功更新！"
+      Rails.cache.delete("data_records")
       redirect_to data_records_path
     else
       flash.now[:alert] = "更新失败，请检查输入！"
@@ -28,6 +32,7 @@ class DataRecordsController < ApplicationController
     @data_record = DataRecord.find(params[:id])
     # authorize @data_record
     @data_record.destroy
+    Rails.cache.delete("data_records")
     flash[:notice] = "数据记录已成功删除！"
     redirect_to data_records_url
   end
@@ -47,6 +52,7 @@ class DataRecordsController < ApplicationController
         data_record.update(row.to_hash)
       end
       flash[:notice] = "数据记录已成功更新！"
+      Rails.cache.delete("data_records")
     else
       flash[:alert] = "请选择一个 CSV 文件！"
     end
