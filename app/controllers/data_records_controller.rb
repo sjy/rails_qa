@@ -12,12 +12,12 @@ class DataRecordsController < ApplicationController
 
   def edit
     @data_record = DataRecord.find(params[:id])
-    # authorize @data_record
+    authorize @data_record, policy_class: DataRecordPolicy
   end
 
   def update
     @data_record = DataRecord.find(params[:id])
-    # authorize @data_record
+    authorize @data_record
     if @data_record.update(data_record_params)
       flash[:notice] = "数据记录已成功更新！"
       DeleteCacheJob.perform_later("data_records")
@@ -30,7 +30,7 @@ class DataRecordsController < ApplicationController
 
   def destroy
     @data_record = DataRecord.find(params[:id])
-    # authorize @data_record
+    authorize @data_record
     @data_record.destroy
     flash[:notice] = "数据记录已成功删除！"
     DeleteCacheJob.perform_later("data_records")

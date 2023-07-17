@@ -1,9 +1,9 @@
 class DataRecordPolicy < ApplicationPolicy
   def update?
-    user.reviewer
+    user.role == "reviewer"
   end
 
   def destroy?
-    user.reviewer
+    user.role == "reviewer"
   end
 end
