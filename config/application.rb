@@ -29,8 +29,8 @@ module Blog
     # NOTICE: 开发环境
     config.cache_store = :memory_store
     config..perform_caching = true
-
     # 在生产环境中，缓存默认是启用的，通常使用 :mem_cache_store 或 :redis_cache_store。您可以根据需要配置缓存设置。
+    config.active_job.queue_adapter = :sidekiq
 
   end
 end

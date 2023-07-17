@@ -26,6 +26,8 @@
     "lint:js": "stale-dep && eslint 'app/{components,frontend,javascript}/**/*.{js,jsx}'",
     "lint:css": "stale-dep && stylelint 'app/{components,frontend,assets/stylesheets}/**/*.css'",
     "postinstall": "stale-dep -u",
+    "start:redis": "redis-server",
+    "start:worker": "bundle exec sidekiq -C config/sidekiq.yml",
     "start": "stale-dep && concurrently -i -k --kill-others-on-fail -p none 'bin/rails s -b 0.0.0.0'"
   }
 }
