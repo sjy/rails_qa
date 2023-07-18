@@ -7,6 +7,7 @@
     <th>Target Name</th>
     <th>Changed Value</th>
     <th>Status</th>
+    <th>Created At</th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -17,8 +18,9 @@
       <td><%= data_record_revision.data_record.name %></td>
       <td><%= data_record_revision.change %></td>
       <td><%= data_record_revision.status %></td>
+      <td><%= data_record_revision.created_at %></td>
       <td>
-        <% if policy(data_record_revision.data_record).review? && data_record_revision.status == "pending" %>
+        <% if policy(data_record_revision.data_record).update? && data_record_revision.status == "pending" %>
           <%= button_to '通过', review_data_record_data_record_revision_path(data_record_revision.data_record, data_record_revision, status: 'approved'), method: :post, form: { style: 'display: inline-block' } %>
           <%= button_to '驳回', review_data_record_data_record_revision_path(data_record_revision.data_record, data_record_revision, status: 'rejected'), method: :post, form: { style: 'display: inline-block' } %>
         <% end %>

@@ -10,4 +10,11 @@
 #
 class DataRecord < ApplicationRecord
   has_many :data_record_revisions
+
+  def update_from_revision(revision)
+    if revision.change
+      # 根据修订版的更改更新数据记录
+      update_attribute(:value, revision.change)
+    end
+  end
 end

@@ -37,11 +37,6 @@ class DataRecordsController < ApplicationController
     redirect_to data_records_url
   end
 
-  def update_from_revision(revision)
-    # 根据修订版的更改更新数据记录
-    update_attribute(:value, revision.change)
-  end
-
   def data_record_params
     params.require(:data_record).permit(:name, :value)
     # ... 其他属性 ...

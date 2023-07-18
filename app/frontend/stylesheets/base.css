@@ -6,3 +6,64 @@
   - Default foreground, background, and link colors.
   - Global CSS variables (declared on :root), such as color palette.
 */
+
+.field {
+  display: block;
+}
+
+.field label {
+  margin: 8px 0;
+  font-weight: bold;
+}
+
+.field input:not([type="checkbox"]) {
+  width: 100%;
+  border: 2px solid #94a3b8;
+  margin: 12px auto 24px;
+}
+
+.field input[type="checkbox"] {
+  position: relative;
+  top: 2px;
+  margin-right: 4px;
+}
+
+.actions {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: 36px auto 12px;
+}
+
+.actions input {
+  font-weight: bold;
+  width: 120px;
+  padding: 8px;
+  background-color: #34d399;
+}
+
+#new_user {
+  width: 256px;
+  margin: 0.5em auto 2em;
+}
+
+.table-container {
+  min-width: 40vw;
+  padding: 10px;
+}
+
+table caption {
+  font-size: x-large;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+
+td, th {
+  text-align: center;
+  background-color: #34d399;
+}
