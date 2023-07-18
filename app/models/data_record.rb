@@ -9,4 +9,5 @@
 #  updated_at :datetime         not null
 #
 class DataRecord < ApplicationRecord
+  has_many :data_record_revisions
 end

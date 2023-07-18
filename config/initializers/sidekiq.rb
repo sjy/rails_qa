@@ -17,6 +17,15 @@ return unless defined?(Sidekiq)
 # require "sidekiq/middleware/current_attributes"
 # Sidekiq::CurrentAttributes.persist(Myapp::Current)
 
+redis_opts = { url: ENV['REDIS_URL'], namespace: "blog" }
+
+Sidekiq.configure_server do |config|
+  config.redis = redis_opts
+end
+Sidekiq.configure_client do |config|
+  config.redis = redis_opts
+end
+
 require "sidekiq/web"
 
 Sidekiq::Web.app_url = "/"
@@ -26,7 +35,6 @@ sidekiq_password = ENV.fetch("SIDEKIQ_WEB_PASSWORD", nil)
 
 Sidekiq::Web.use(Rack::Auth::Basic, "Sidekiq") do |username, password|
   if sidekiq_username.present? && sidekiq_password.present?
-    ActiveSupport::SecurityUtils.secure_compare(username, sidekiq_username) &
-      ActiveSupport::SecurityUtils.secure_compare(password, sidekiq_password)
+    ActiveSupport::SecurityUtils.secure_compare(username, sidekiq_username) & ActiveSupport::SecurityUtils.secure_compare(password, sidekiq_password)
   end
 end

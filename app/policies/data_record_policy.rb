@@ -6,4 +6,12 @@ class DataRecordPolicy < ApplicationPolicy
   def destroy?
     user.role == "reviewer"
   end
+
+  def revision?
+    user.role == "editor"
+  end
+
+  def review?
+    user.role == "reviewer"
+  end
 end

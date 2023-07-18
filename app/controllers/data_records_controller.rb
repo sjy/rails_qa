@@ -21,7 +21,7 @@ class DataRecordsController < ApplicationController
     if @data_record.update(data_record_params)
       flash[:notice] = "数据记录已成功更新！"
       DeleteCacheJob.perform_later("data_records")
-      redirect_to data_records_path
+      redirect_to root_path
     else
       flash.now[:alert] = "更新失败，请检查输入！"
       render :edit
@@ -35,6 +35,11 @@ class DataRecordsController < ApplicationController
     flash[:notice] = "数据记录已成功删除！"
     DeleteCacheJob.perform_later("data_records")
     redirect_to data_records_url
+  end
+
+  def update_from_revision(revision)
+    # 根据修订版的更改更新数据记录
+    update_attribute(:value, revision.change)
   end
 
   def data_record_params
@@ -58,4 +63,5 @@ class DataRecordsController < ApplicationController
     end
     redirect_to root_path
   end
+
 end

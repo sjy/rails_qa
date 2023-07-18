@@ -7,6 +7,7 @@
 <% end %>
 <hr/>
 <table>
+  <caption>Data Records</caption>
   <thead>
   <tr>
     <th>ID</th>
@@ -22,12 +23,17 @@
       <td><%= data_record.name %></td>
       <td><%= data_record.value %></td>
       <td>
-        <%= link_to '编辑', edit_data_record_path(data_record) %>|
-        <%= button_to '删除', data_record_path(data_record), method: :delete, data: { turbo_confirm: '确定要删除这条记录吗？' }, form: { style: 'display:inline-block;' } %>
+        <% if policy(data_record).update? %>
+          <%= link_to '编辑', edit_data_record_path(data_record) %> |
+          <%= button_to '删除', data_record_path(data_record), method: :delete, data: { turbo_confirm: '确定要删除这条记录吗？' }, form: { style: 'display:inline-block;' } %>
+        <% end %>
+        <% if policy(data_record).revision? %>
+          <%= link_to '提交编辑', data_record_data_record_revisions_path(data_record) %> |
+          <%= button_to '提交删除', data_record_path(data_record), method: :delete, data: { turbo_confirm: '确定要提交删除记录吗？' }, form: { style: 'display:inline-block;' } %>
+        <% end %>
       </td>
     </tr>
   <% end %>
   </tbody>
 </table>
-
 <%#= paginate @data_records %>
