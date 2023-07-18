@@ -134,6 +134,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    foreman (0.87.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     good_migrations (0.2.1)
@@ -351,6 +352,7 @@ DEPENDENCIES
   dotenv-rails
   erb_lint
   factory_bot_rails
+  foreman
   good_migrations
   kaminari
   launchy

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   # TODO: resolve error
-  # mount Sidekiq::Web => "/sidekiq" if defined?(Sidekiq) # monitoring console
+  mount Sidekiq::Web => "/sidekiq" if defined?(Sidekiq) # monitoring console
 
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy'

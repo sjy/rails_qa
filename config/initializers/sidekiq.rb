@@ -17,15 +17,6 @@ return unless defined?(Sidekiq)
 # require "sidekiq/middleware/current_attributes"
 # Sidekiq::CurrentAttributes.persist(Myapp::Current)
 
-redis_opts = { url: ENV['REDIS_URL'], namespace: "blog" }
-
-Sidekiq.configure_server do |config|
-  config.redis = redis_opts
-end
-Sidekiq.configure_client do |config|
-  config.redis = redis_opts
-end
-
 require "sidekiq/web"
 
 Sidekiq::Web.app_url = "/"

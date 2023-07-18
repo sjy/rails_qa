@@ -28,6 +28,7 @@
     "postinstall": "stale-dep -u",
     "start:redis": "redis-server",
     "start:worker": "bundle exec sidekiq -C config/sidekiq.yml",
-    "start": "stale-dep && concurrently -i -k --kill-others-on-fail -p none 'bin/rails s -b 0.0.0.0'"
+    "start": "concurrently -i -k --kill-others-on-fail -p none 'bin/rails s -b 0.0.0.0'",
+    "dev": "bundle exec foreman start -f Procfile.dev"
   }
 }

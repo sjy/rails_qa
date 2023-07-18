@@ -19,6 +19,7 @@ gem "rails", "~> 7.0.6"
 gem "stimulus-rails"
 gem "turbo-rails"
 gem "vite_rails"
+gem "foreman"
 
 group :production do
   gem "postmark-rails"
