@@ -3,9 +3,9 @@
   <caption> Date Record Revisions</caption>
   <thead>
   <tr>
-    <th>Revision ID</th>
-    <th>Record Name</th>
-    <th>Changed Value</th>
+    <th>Re ID</th>
+    <th>Name</th>
+    <th>Changed</th>
     <th>Status</th>
     <th>Created At</th>
     <th>Actions</th>
@@ -19,7 +19,7 @@
       <td><%= data_record_revision.change %></td>
       <td><%= data_record_revision.status %></td>
       <td><%= data_record_revision.created_at %></td>
-      <td>
+      <td style="text-align: center">
         <% if policy(data_record_revision.data_record).update? && data_record_revision.status == "pending" %>
           <%= button_to '通过', review_data_record_data_record_revision_path(data_record_revision.data_record, data_record_revision, status: 'approved'), method: :post, form: { style: 'display: inline-block' } %>
           <%= button_to '驳回', review_data_record_data_record_revision_path(data_record_revision.data_record, data_record_revision, status: 'rejected'), method: :post, form: { style: 'display: inline-block' } %>

@@ -70,6 +70,8 @@ td {
   border-collapse: collapse;
   color: #000;
   background-color: #34d399;
+  padding: 0.25em 0.5em;
+  white-space: nowrap;
 }
 
 caption,

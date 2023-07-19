@@ -22,7 +22,7 @@
       <td><%= data_record.id %></td>
       <td><%= data_record.name %></td>
       <td><%= data_record.value %></td>
-      <td>
+      <td style="text-align: center">
         <% if policy(data_record).update? %>
           <%= link_to '编辑', edit_data_record_path(data_record) %> |
           <%= button_to '删除', data_record_path(data_record), method: :delete, data: { turbo_confirm: '确定要删除这条记录吗,关联的修改记录也会被删除？' }, form: { style: 'display:inline-block;' } %>

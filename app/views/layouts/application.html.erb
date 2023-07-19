@@ -5,7 +5,7 @@
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.3/parsley.min.js' %>
 </head>
 <div class="container flex flex-col">
-  <section class="flex justify-between" style="justify-content:space-between; align-content: center;padding: 10px 0;margin-bottom: 10px;font-size: 16px;font-weight: bolder">
+  <section class="flex justify-between" style="border:1px solid grey;justify-content:space-between; align-content: center;padding: 10px 1.5em;margin-bottom: 10px;font-size: 16px;font-weight: bolder">
     <% if user_signed_in? %>
       <div>
         欢迎您，<%= current_user.role %>！
