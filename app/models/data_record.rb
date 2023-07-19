@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class DataRecord < ApplicationRecord
-  has_many :data_record_revisions
+  has_many :data_record_revisions, dependent: :destroy
 
   def update_from_revision(revision)
     if revision.change

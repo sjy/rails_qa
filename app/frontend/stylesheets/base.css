@@ -11,6 +11,11 @@
   display: block;
 }
 
+button:hover:not([disabled]),
+input[type="submit"] {
+  cursor: pointer;
+}
+
 .field label {
   margin: 8px 0;
   font-weight: bold;
@@ -58,12 +63,34 @@ table caption {
   letter-spacing: 0.5px;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid white;
   border-collapse: collapse;
+  color: #000;
+  background-color: #34d399;
 }
 
-td, th {
-  text-align: center;
+caption,
+th {
   background-color: #34d399;
+  color: #f7f7f7;
+  text-align: center;
+}
+
+.watermark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/logo.svg'); /* 用您的水印图片替换 */
+  background-repeat: repeat;
+  background-size: 256px 180px;
+  background-origin: content-box;
+  background-position: center;
+  opacity: 0.1;
+  z-index: 999;
+  pointer-events: none;
 }

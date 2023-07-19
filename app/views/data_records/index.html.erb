@@ -1,9 +1,9 @@
-<%= form_with url: import_data_records_path, multipart: false do |form| %>
-  <div class="form-group justify-between inline-flex" style="margin: 16px 0">
-    <%= form.label :file, "选择 CSV 文件" %>
-    <%= form.file_field :file, accept: '.csv', required: true %>
+<%= form_with url: import_data_records_path, html: { style: 'display:flex; justify-content:space-between; align-items:center;margin: 12px 0' }, multipart: false do |form| %>
+  <div class="form-group justify-between inline-flex">
+    <%= form.label :file, "选择 CSV 文件：" %>
+    <%= form.file_field :file, accept: '.csv', required: true, placeholder: '请选择' %>
   </div>
-  <%= form.submit "上传并更新数据记录", class: "btn btn-primary", style: 'padding: 4px 8px; font-size: 14px; height: 28px' %>
+  <%= form.submit "上传并更新数据记录", style: 'padding: 4px 8px; font-size: 14px; height: 28px' %>
 <% end %>
 <hr/>
 <table>
@@ -25,7 +25,7 @@
       <td>
         <% if policy(data_record).update? %>
           <%= link_to '编辑', edit_data_record_path(data_record) %> |
-          <%= button_to '删除', data_record_path(data_record), method: :delete, data: { turbo_confirm: '确定要删除这条记录吗？' }, form: { style: 'display:inline-block;' } %>
+          <%= button_to '删除', data_record_path(data_record), method: :delete, data: { turbo_confirm: '确定要删除这条记录吗,关联的修改记录也会被删除？' }, form: { style: 'display:inline-block;' } %>
         <% end %>
         <% if policy(data_record).revision? %>
           <%= link_to '提交编辑', data_record_data_record_revisions_path(data_record) %> |

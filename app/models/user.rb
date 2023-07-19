@@ -23,5 +23,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum role: { editor: 0, reviewer: 1 }
-  has_many :data_record_revisions
+  has_many :data_record_revisions, dependent: :restrict_with_error
 end

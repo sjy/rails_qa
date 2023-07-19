@@ -31,10 +31,14 @@ class DataRecordsController < ApplicationController
   def destroy
     @data_record = DataRecord.find(params[:id])
     authorize @data_record
-    @data_record.destroy
-    flash[:notice] = "数据记录已成功删除！"
-    DeleteCacheJob.perform_later("data_records")
-    redirect_to data_records_url
+
+    if @data_record.destroy
+      flash[:notice] = "数据记录已成功删除！"
+      DeleteCacheJob.perform_later("data_records")
+    else
+      flash[:notice] = "存在关联的数据没有删除，请先处理"
+    end
+    redirect_to root_path
   end
 
   def data_record_params
