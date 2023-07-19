@@ -1,6 +1,7 @@
-# blog
+# DATA QA Rails Application
 
-This is a Rails 7 app.
+This is a Rails 7 app boost with Vite, scratched
+from [rails-template](https://github.com/mattbrictson/rails-template).
 
 ## Documentation
 
@@ -13,8 +14,9 @@ This README describes the purpose of this repository and how to set up a develop
 This project requires:
 
 * Ruby 3.1.4, preferably managed using [rbenv][]
-* Node and Yarn 1.x (`npm install -g yarn`)
+* Node and Yarn 1.x (`npm install -g yarn`), NVM is recommended
 * PostgreSQL must be installed and accepting connections
+* Redis Server must be installed
 
 On a Mac, you can obtain all of the above packages using [Homebrew][].
 
@@ -25,14 +27,17 @@ On a Mac, you can obtain all of the above packages using [Homebrew][].
 Run the `bin/setup` script. This script will:
 
 * Install dependencies using Bundler and Yarn
+  * `bundle install`
+  * `yarn install`
+  * other preset script
 * Create a `.env.development` file
-* Create, migrate, and seed the database
+* Create, migrate, and seed the database (by default, localhost:5432)
 
 ### Run it!
 
-Start the app with `yarn start`.
+Start the app with `yarn dev`.
 
-The app will be located at <http://localhost:3000/>.
+The app will be located at <http://127.0.0.1:5000/>.
 
 ## Development
 
@@ -74,4 +79,5 @@ Optionally:
 * `WEB_CONCURRENCY`
 
 [rbenv]:https://github.com/sstephenson/rbenv
+
 [Homebrew]:http://brew.sh
