@@ -26,10 +26,9 @@ module Blog
     config.autoload_paths += Dir[Rails.root.join('app', 'policies', '*.rb'), Rails.root.join('app', 'lib', '*.rb')
     ]
 
-    # NOTICE: 开发环境
-    config.cache_store = :memory_store
-    config..perform_caching = true
-    # 在生产环境中，缓存默认是启用的，通常使用 :mem_cache_store 或 :redis_cache_store。您可以根据需要配置缓存设置。
+    config.perform_caching = true
+    # NOTICE: 开发环境还可以用 file_store，在生产环境中，缓存默认是启用的，通常使用 :mem_cache_store 或 :redis_cache_store。您可以根据需要配置缓存设置。
+    config.cache_store = :memory_store # 重启后丢失
     config.active_job.queue_adapter = :sidekiq
 
   end

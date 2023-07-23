@@ -1,6 +1,6 @@
 class DataRecordsController < ApplicationController
   def index
-    @data_records = Rails.cache.fetch("data_records", expires_in: 5.minutes) do
+    @data_records = Rails.cache.fetch("data_records", expires_in: 10.minutes) do
       # DataRecord.order(:id).page(params[:page]).per(params[:per_page])
       DataRecord.all
     end
